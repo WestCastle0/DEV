@@ -19,22 +19,9 @@ namespace wc
     }
 
     template<class iter, class Compare>
-    void insert_sort(iter first, size_t len, Compare comp)
-    {
-        int i, pos, remember;
-        for (i = 1; i < len; i++)
-        {
-            remember = first[(pos = i)];
-            while (--pos >= 0 && comp(remember, first[pos])) first[pos + 1] = first[pos];
-            first[pos + 1] = remember;
-        }
-    }
-
-    template<class iter, class Compare>
     constexpr void quickSort(iter first, size_t len, Compare comp)
     {
         if (len <= 1) return;
-        if (len <= 50) { wc::insert_sort(first, len, comp); return; }
         size_t i = 0;
         size_t j = len;
         while (true)
